@@ -1,0 +1,28 @@
+.editorconfig{
+  "node": true,
+  "strict": true,
+  "curly": true,
+  "indent": 2,
+  "trailing": true,
+  "undef": true,
+  "devel": true,
+  "immed": true,
+  "globals": {
+    "angular": true
+  },
+  "predef": [
+    "define",
+    "require",
+    "exports",
+    "module",
+    "describe",
+    "before",
+    "beforeEach",
+    "after",
+    "afterEach",
+    "it",
+    "inject",
+    "expect",
+    "spyOn"
+  ]
+}
