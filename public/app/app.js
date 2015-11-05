@@ -21,6 +21,11 @@
     $authProvider.facebook({
       clientId: ''
     });
+  })
+  .config(function($authProvider) {
+    $authProvider.github({
+      clientId: ''
+    });
   });
 
 })();
