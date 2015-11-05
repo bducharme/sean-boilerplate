@@ -16,6 +16,11 @@
     $authProvider.google({
       clientId: ''
     });
+  })
+  .config(function($authProvider) {
+    $authProvider.facebook({
+      clientId: ''
+    });
   });
 
 })();

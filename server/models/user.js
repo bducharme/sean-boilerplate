@@ -55,9 +55,6 @@ module.exports = function(sequelize, DataTypes) {
       },
       hooks: {
         beforeCreate: function(user, options, next) {
-
-          console.log('problemo1');
-
           if (!user.password) {
             return next();
           }

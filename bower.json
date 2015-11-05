@@ -13,7 +13,8 @@
     "animate.css": "~3.3.0",
     "angular": "~1.4.0",
     "ngstorage": "~0.3.9",
-    "satellizer": "~0.13.0"
+    "satellizer": "~0.13.0",
+    "font-awesome": "~4.3.0"
   },
   "devDependencies": {
     "angular-mocks": "~1.4.0"

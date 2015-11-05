@@ -13,3 +13,7 @@ module.exports.issueToken = function(user) {
   };
   return jwt.sign(payload, config.TOKEN_SECRET);
 };
+
+module.exports.decodeToken = function(token) {
+  return jwt.decode(token, config.TOKEN_SECRET);
+};

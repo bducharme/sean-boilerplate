@@ -1,4 +1,4 @@
-.editorconfig{
+{
   "node": true,
   "strict": true,
   "curly": true,
