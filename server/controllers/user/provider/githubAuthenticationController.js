@@ -10,11 +10,6 @@ var config = require(path.join(__dirname, '..', '..', '..', 'config/env'));
 var tokenService = require(path.join(__dirname, '..', '..', '..', 'services/token'));
 var db = require(path.join(__dirname, '..', '..', '..', 'config/sequelize'));
 
-/*
- |--------------------------------------------------------------------------
- | Login with Github
- |--------------------------------------------------------------------------
- */
 exports.loginWithGithub = function(req, res) {
   var accessTokenUrl = 'https://github.com/login/oauth/access_token';
   var userApiUrl = 'https://api.github.com/user';

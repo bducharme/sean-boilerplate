@@ -9,11 +9,6 @@ var config = require(path.join(__dirname, '..', '..', '..', 'config/env'));
 var tokenService = require(path.join(__dirname, '..', '..', '..', 'services/token'));
 var db = require(path.join(__dirname, '..', '..', '..', 'config/sequelize'));
 
-/*
- |--------------------------------------------------------------------------
- | Login with Google
- |--------------------------------------------------------------------------
- */
 exports.loginWithGoogle = function(req, res) {
   var accessTokenUrl = 'https://accounts.google.com/o/oauth2/token';
   var peopleApiUrl = 'https://www.googleapis.com/plus/v1/people/me/openIdConnect';
@@ -27,7 +22,8 @@ exports.loginWithGoogle = function(req, res) {
 
   // Step 1. Exchange authorization code for access token.
   request.post(accessTokenUrl, {
-    json: true, form: params
+    json: true,
+    form: params
   }, function(err, response, token) {
     var accessToken = token.access_token;
     var headers = {

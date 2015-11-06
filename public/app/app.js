@@ -26,6 +26,11 @@
     $authProvider.github({
       clientId: ''
     });
+  })
+  .config(function($authProvider) {
+    $authProvider.twitter({
+      clientId: ''
+    });
   });
 
 })();

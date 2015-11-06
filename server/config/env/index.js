@@ -25,7 +25,6 @@ var all = {
   FACEBOOK_SECRET: process.env.FACEBOOK_SECRET || '',
   GOOGLE_SECRET: process.env.GOOGLE_SECRET || '',
   GITHUB_SECRET: process.env.GITHUB_SECRET || '',
-  LINKEDIN_SECRET: process.env.LINKEDIN_SECRET || '',
 
   // OAuth 1.0
   TWITTER_KEY: process.env.TWITTER_KEY || '',

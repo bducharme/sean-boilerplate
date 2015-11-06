@@ -9,11 +9,6 @@ var config = require(path.join(__dirname, '..', '..', '..', 'config/env'));
 var tokenService = require(path.join(__dirname, '..', '..', '..', 'services/token'));
 var db = require(path.join(__dirname, '..', '..', '..', 'config/sequelize'));
 
-/*
- |--------------------------------------------------------------------------
- | Login with Facebook
- |--------------------------------------------------------------------------
- */
 exports.loginWithFacebook = function(req, res) {
   var fields = ['id', 'email', 'first_name', 'last_name', 'link', 'name'];
   var accessTokenUrl = 'https://graph.facebook.com/v2.5/oauth/access_token';

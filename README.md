@@ -1,6 +1,6 @@
 # sean-boilerplate ![Dependency Status](https://david-dm.org/bducharme/sean-boilerplate/status.svg?style=flat)
 
-A boilerplate for Node.js web applications with Gulp. 
+A boilerplate for Node.js web applications with Gulp.
 
 Technologies
 --------
@@ -12,15 +12,15 @@ Technologies
 
 Features (In Progress)
 --------
-- **Gulp automated workflow** based on the [generator-gulp-angular](https://github.com/Swiip/generator-gulp-angular) 
+- **Gulp automated workflow** based on the [generator-gulp-angular](https://github.com/Swiip/generator-gulp-angular)
  - Using Nodemon and Browsersync for live development
  - Fully optimized build process
  - Unit test with Karma and E2E test with Protractor
-- **Token-based Authentication** using [Satellizer](https://github.com/sahat/satellizer) 
+- **Token-based Authentication** using [Satellizer](https://github.com/sahat/satellizer)
  - Local Authentication using Email and Password
- - Support for Google, Facebook, LinkedIn, GitHub and Twitter
+ - Support for Google, Facebook, Twitter and Github
  - **Account Management**
-    - Profile 
+    - Profile
     - Change Password
     - Forgot Password
     - Link multiple providers to one account
