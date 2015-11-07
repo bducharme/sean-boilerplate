@@ -1,6 +1,5 @@
 'use strict';
 
-var path = require('path');
 var gulp = require('gulp');
 var nodemon = require('gulp-nodemon');
 var browserSync = require('browser-sync');
@@ -16,7 +15,10 @@ gulp.task('nodemon', function (cb) {
     ignore: [
       'gulpfile.js',
       'node_modules/'
-    ]
+    ],
+    env: {
+      'NODE_ENV': 'development'
+    }
   })
     .on('start', function onStart() {
       // ensure start only got called once

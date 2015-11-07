@@ -68,7 +68,7 @@ exports.loginWithTwitter = function(req, res) {
             where: {
               twitter: profile.id
             }
-          }, function(err, existingUser) {
+          }).then(function(existingUser) {
             if (existingUser) {
               return res.status(409).send({
                 message: 'There is already a Twitter account that belongs to you'
@@ -95,6 +95,10 @@ exports.loginWithTwitter = function(req, res) {
               return res.status(400).send({
                 message: 'User not found'
               });
+            });
+          }).catch(function(err) {
+            return res.status(400).send({
+              message: err
             });
           });
         } else {

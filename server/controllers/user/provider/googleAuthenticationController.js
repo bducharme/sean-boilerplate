@@ -46,7 +46,7 @@ exports.loginWithGoogle = function(req, res) {
           where: {
             google: profile.sub
           }
-        }, function(err, existingUser) {
+        }).then(function(existingUser) {
           if (existingUser) {
             return res.status(409).send({
               message: 'There is already a Google account that belongs to you'
@@ -74,7 +74,11 @@ exports.loginWithGoogle = function(req, res) {
               message: 'User not found'
             });
           });
+        }).catch(function(err) {
+        return res.status(400).send({
+          message: err
         });
+      });
       } else {
         // Step 3b. Create a new user account or return an existing one.
         db.User.findOne({

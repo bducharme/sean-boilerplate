@@ -10,27 +10,6 @@
     'satellizer',
     'core',
     'user'
-  ])
-
-  .config(function($authProvider) {
-    $authProvider.google({
-      clientId: ''
-    });
-  })
-  .config(function($authProvider) {
-    $authProvider.facebook({
-      clientId: ''
-    });
-  })
-  .config(function($authProvider) {
-    $authProvider.github({
-      clientId: ''
-    });
-  })
-  .config(function($authProvider) {
-    $authProvider.twitter({
-      clientId: ''
-    });
-  });
+  ]);
 
 })();

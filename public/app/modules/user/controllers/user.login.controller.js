@@ -3,12 +3,25 @@
 
   angular.module('user')
     .controller('LoginController', function ($state, $auth) {
+      var vm = this;
 
-      var service = {
+      vm.service = {
+        submitForm: submitForm,
         authenticate: authenticate
       };
 
-      return service;
+      return vm;
+
+      function submitForm() {
+        $auth.login(vm.user)
+          .then(function () {
+            console.log('You have successfully signed in.');
+            $state.go('profile');
+          })
+          .catch(function (response) {
+            console.log(response);
+          });
+      }
 
       function authenticate(provider) {
         $auth.authenticate(provider)

@@ -52,7 +52,7 @@ exports.loginWithFacebook = function(req, res) {
         }).then(function(existingUser) {
           if (existingUser) {
             return res.status(409).send({
-              message: 'There is already a GitHub account that belongs to you'
+              message: 'There is already a Facebook account that belongs to you'
             });
           }
           var token = req.headers.authorization.split(' ')[1];

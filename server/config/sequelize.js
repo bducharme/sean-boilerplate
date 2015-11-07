@@ -7,12 +7,6 @@ var _         = require('lodash');
 var config    = require('./env');
 var db        = {};
 
-var sequelize = new Sequelize(config.db.dbName, config.db.username, config.db.password, {
-  dialect: config.db.dialect,
-  port:   config.db.port,
-  logging : false
-});
-
 sequelize.authenticate()
   .then(function () {
     console.log('Database connection has been established successfully.')
@@ -39,6 +33,12 @@ Object.keys(db).forEach(function(modelName) {
   }
 });
 
+
+var sequelize_fixtures = require('sequelize-fixtures');
+var models = {
+  User: require(path.join(__dirname, '/../models/user'))
+};
+
 // WARNING: {force: true} will DROP your database everytime you re-run your application
 sequelize
   .sync({
@@ -48,6 +48,9 @@ sequelize
   })
   .then(function () {
     console.log("Database synchronized");
+    if(process.env.SEED) {
+      require(path.join(__dirname, '/../../e2e/seed'))(db);
+    }
   })
   .catch(function (err) {
     console.log("An error occured %j", err);

@@ -3,7 +3,7 @@
 var path = require('path');
 var gulp = require('gulp');
 
-var Server = require('karma').Server
+var Server = require('karma').Server;
 
 function runTests (singleRun, done) {
   var config = {

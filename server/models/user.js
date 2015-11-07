@@ -1,6 +1,6 @@
 'use strict';
 
-var crypto = require('crypto');
+var bcrypt = require('bcryptjs');
 
 module.exports = function(sequelize, DataTypes) {
   var User = sequelize.define('User', {
@@ -10,9 +10,6 @@ module.exports = function(sequelize, DataTypes) {
       },
       password: {
         type: DataTypes.STRING
-      },
-      salt: {
-        type: DataTypes.BLOB
       },
       displayName: {
         type: DataTypes.STRING,
@@ -30,38 +27,40 @@ module.exports = function(sequelize, DataTypes) {
       github: {
         type: DataTypes.STRING
       },
-      linkedin: {
-        type: DataTypes.STRING
-      },
       twitter: {
         type: DataTypes.STRING
       }
     },
     {
       instanceMethods: {
-        makeSalt: function() {
-          return crypto.randomBytes(128).toString('base64');
-        },
         authenticate: function(password){
           return this.password === this.hashPassword(password);
         },
-        hashPassword: function(password) {
-          if (this.salt && password) {
-            return crypto.pbkdf2Sync(password, this.salt, 10000, 64).toString('base64');
-          } else {
-            return password;
-          }
+        comparePassword: function(password, done) {
+          bcrypt.compare(password, this.password, function(err, isMatch) {
+            done(err, isMatch);
+          });
         }
       },
       hooks: {
         beforeCreate: function(user, options, next) {
-          if (!user.password) {
+          bcrypt.genSalt(10, function(err, salt) {
+            bcrypt.hash(user.password, salt, function(err, hash) {
+              user.password = hash;
+              next();
+            });
+          });
+        },
+        beforeUpdate: function(user, options, next) {
+          if (!user.changed('password')) {
             return next();
           }
-
-          console.log('problemo2');
-          user.salt = user.makeSalt();
-          user.password = user.hashPassword(user.password);
+          bcrypt.genSalt(10, function(err, salt) {
+            bcrypt.hash(user.password, salt, function(err, hash) {
+              user.password = hash;
+              next();
+            });
+          });
         }
       }
     });
