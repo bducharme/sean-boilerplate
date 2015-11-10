@@ -25,7 +25,6 @@ exports.loginWithFacebook = function(req, res) {
     url: accessTokenUrl, qs: params, json: true
   }, function(err, response, accessToken) {
     if (response.statusCode !== 200) {
-      console.log(config.FACEBOOK_SECRET);
       return res.status(500).send({
         message: accessToken.error.message
       });

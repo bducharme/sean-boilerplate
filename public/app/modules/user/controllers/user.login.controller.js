@@ -6,13 +6,13 @@
       var vm = this;
 
       vm.service = {
-        submitForm: submitForm,
+        login: login,
         authenticate: authenticate
       };
 
       return vm;
 
-      function submitForm() {
+      function login() {
         $auth.login(vm.user)
           .then(function () {
             console.log('You have successfully signed in.');

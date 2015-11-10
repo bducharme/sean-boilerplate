@@ -17,7 +17,7 @@
     }));
 
     it('should call authenticate on $auth service', function() {
-      loginController.authenticate('twitter');
+      loginController.service.authenticate('twitter');
       expect(mockAuthService.authenticate).toHaveBeenCalled();
     });
   });

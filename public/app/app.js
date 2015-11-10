@@ -2,6 +2,7 @@
   'use strict';
 
   angular.module('sean-boilerplate', [
+    'ngMessages',
     'ngSanitize',
     'ngResource',
     'ngAnimate',

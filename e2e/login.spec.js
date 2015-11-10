@@ -9,7 +9,7 @@ describe('The login view', function () {
     loginPage = require('./login.po');
   });
 
-  it('should redirect to profile on login', function() {
+  it('should redirect to profile on valid login', function() {
     loginPage.setEmail('valid@valid.valid');
     loginPage.setPassword('valid');
     loginPage.login().then(function() {

@@ -7,6 +7,12 @@ var _         = require('lodash');
 var config    = require('./env');
 var db        = {};
 
+var sequelize = new Sequelize(config.db.dbName, config.db.username, config.db.password, {
+  dialect: config.db.dialect,
+  port:   config.db.port,
+  logging : false
+});
+
 sequelize.authenticate()
   .then(function () {
     console.log('Database connection has been established successfully.')

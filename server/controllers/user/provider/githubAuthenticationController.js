@@ -78,9 +78,6 @@ exports.loginWithGithub = function(req, res) {
         });
       } else {
         // Step 3b. Create a new user account or return an existing one.
-
-        console.log(profile);
-
         db.User.findOne({
           where: {
             github: (profile.id).toString()
