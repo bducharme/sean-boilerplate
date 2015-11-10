@@ -10,7 +10,7 @@ Technologies
 - [Node.js](https://nodejs.org/en/)
 - Pure Javascript, HTML and CSS
 
-Features (In Progress)
+Features (*In Progress)
 --------
 - **Gulp automated workflow** based on the [generator-gulp-angular](https://github.com/Swiip/generator-gulp-angular)
  - Using Nodemon and Browsersync for live development
@@ -20,12 +20,23 @@ Features (In Progress)
  - Local Authentication using Email and Password
  - Support for Google, Facebook, Twitter and Github
  - **Account Management**
-    - Profile
-    - Change Password
-    - Forgot Password
-    - Link multiple providers to one account
-    - Delete Account
+    - Profile*
+    - Change Password*
+    - Forgot Password*
+    - Link multiple providers to one account*
+    - Delete Account*
 - **Postgres** is the default database
+
+Usage
+--------
+* `gulp` or `gulp build` to build an optimized version of your application in `/dist`
+* `gulp serve` to launch a browser sync server on your source files
+* `gulp serve:dist` to launch a server on your optimized application
+*  `gulp seed` to launch your server in testing environment and seed the testing database
+* `gulp test` to launch your unit tests with Karma
+* `gulp test:auto` to launch your unit tests with Karma in watch mode
+* `gulp protractor` to launch your e2e tests with Protractor
+* `gulp protractor:dist` to launch your e2e tests with Protractor on the dist files
 
 
 License
