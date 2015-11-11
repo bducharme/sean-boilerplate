@@ -6,22 +6,25 @@
       <div class="panel-body">
         <h2 class="text-center">Sign up</h2>
         <form method="post" ng-submit="vm.service.signup()" name="signupForm">
-          <div class="form-group has-feedback" ng-class="{ 'has-error' : signupForm.email.$invalid && signupForm.email.$dirty }">
+          <div class="form-group has-feedback" ng-class="{ 'has-error' : signupForm.email.$invalid && signupForm.email.$dirty || vm.serverErrors }">
             <input class="form-control input-lg" type="email" id="email" name="email" ng-model="vm.user.email" placeholder="Email" required>
-            <div class="help-block text-danger" ng-if="signupForm.email.$dirty" ng-messages="signupForm.email.$error">
+            <div class="help-block" ng-if="signupForm.email.$dirty" ng-messages="signupForm.email.$error">
               <div ng-message="required">Your email address is required.</div>
               <div ng-message="email">Your email address is invalid.</div>
+            </div>
+            <div class="help-block" ng-if="signupForm.email.$dirty" ng-messages="vm.serverErrors">
+              <div ng-message="emailTaken">{{vm.serverErrors.emailTaken}}</div>
             </div>
           </div>
           <div class="form-group has-feedback" ng-class="{ 'has-error' : signupForm.password.$invalid && signupForm.password.$dirty }">
             <input class="form-control input-lg" type="password" name="password" ng-model="vm.user.password" placeholder="Password" required>
-            <div class="help-block text-danger" ng-if="signupForm.password.$dirty" ng-messages="signupForm.password.$error">
+            <div class="help-block" ng-if="signupForm.password.$dirty" ng-messages="signupForm.password.$error">
               <div ng-message="required">Password is required.</div>
             </div>
           </div>
           <div class="form-group has-feedback" ng-class="{ 'has-error' : signupForm.confirmPassword.$invalid && signupForm.confirmPassword.$dirty }">
             <input password-match="vm.user.password" class="form-control input-lg" type="password" name="confirmPassword" ng-model="vm.confirmPassword" placeholder="Confirm Password">
-            <div class="help-block text-danger" ng-if="signupForm.confirmPassword.$dirty" ng-messages="signupForm.confirmPassword.$error">
+            <div class="help-block" ng-if="signupForm.confirmPassword.$dirty" ng-messages="signupForm.confirmPassword.$error">
               <div ng-message="compareTo">Password must match.</div>
             </div>
           </div>

@@ -1,3 +1,75 @@
 <div ng-include="'app/modules/core/views/navbar.html'"></div>
 
-<h1>Profile</h1>
+<div class="container">
+
+  <div class="alert alert-success clickable" role="alert" ng-click="vm.service.closeAlert()" ng-show="vm.alert">
+    <uib-alert type="success">Profile was successfully updated!</uib-alert>
+  </div>
+
+  <div class="panel panel-default">
+    <div class="panel-heading">Profile</div>
+    <div class="panel-body">
+      <legend>Edit My Profile</legend>
+      <form method="post" ng-submit="vm.service.updateProfile()">
+        <div class="form-group">
+          <label class="control-label">Profile Picture</label>
+          <img class="profile-picture" ng-src="{{vm.user.picture || 'http://placehold.it/100x100'}}">
+        </div>
+        <div class="form-group">
+          <label class="control-label">Email Address</label>
+          <input type="email" class="form-control" ng-model="vm.user.email" />
+        </div>
+        <div class="has-feedback" ng-class="{ 'has-error' : vm.serverErrors.errorUpdate }">
+          <div class="help-block" ng-show="vm.serverErrors" ng-messages="vm.serverErrors">
+            <div ng-message="errorUpdate">{{vm.serverErrors.errorUpdate}}</div>
+          </div>
+        </div>
+
+        <button class="btn btn-lg btn-success">Update Information</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="panel panel-default">
+    <div class="panel-heading">Accounts</div>
+    <div class="panel-body">
+      <legend>Linked Accounts</legend>
+
+      <div class="has-feedback" ng-class="{ 'has-error' : vm.serverErrors.errorLink || vm.serverErrors.errorUnlink }">
+        <div class="help-block" ng-show="vm.serverErrors" ng-messages="vm.serverErrors">
+          <div ng-message="errorLink">{{vm.serverErrors.errorLink}}</div>
+          <div ng-message="errorUnlink">{{vm.serverErrors.errorUnlink}}</div>
+        </div>
+      </div>
+
+      <a class="btn btn-block btn-social btn-google" ng-if="vm.user.google" ng-click="vm.service.unlink('google')">
+        <span class="fa fa-google"></span> Unlink Google Account
+      </a>
+        <a class="btn btn-block btn-social btn-google" ng-if="!vm.user.google" ng-click="vm.service.link('google')">
+        <span class="fa fa-google"></span> Link Google Account
+      </a>
+
+      <a class="btn btn-block btn-social btn-facebook" ng-if="vm.user.facebook" ng-click="vm.service.unlink('facebook')">
+        <span class="fa fa-facebook"></span> Unlink Facebook Account
+      </a>
+      <a class="btn btn-block btn-social btn-facebook" ng-if="!vm.user.facebook" ng-click="vm.service.link('facebook')">
+        <i class="fa fa-facebook"></i>Link Facebook Account
+      </a>
+
+      <a class="btn btn-block btn-social btn-twitter" ng-if="vm.user.twitter" ng-click="vm.service.unlink('twitter')">
+        <span class="fa fa-twitter"></span> Unlink Twitter Account
+      </a>
+      <a class="btn btn-block btn-social btn-twitter" ng-if="!vm.user.twitter" ng-click="vm.service.link('twitter')">
+        <span class="fa fa-twitter"></span> Link Twitter Account
+      </a>
+
+      <a class="btn btn-block btn-social btn-github"  ng-if="vm.user.github" ng-click="vm.service.unlink('github')">
+        <span class="fa fa-github"></span>Unlink GitHub Account
+      </a>
+        <a class="btn btn-block btn-social btn-github"  ng-if="!vm.user.github" ng-click="vm.service.link('github')">
+        <span class="fa fa-github"></span> Link GitHub Account
+      </a>
+
+    </div>
+  </div>
+</div>

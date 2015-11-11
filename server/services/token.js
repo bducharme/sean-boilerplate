@@ -7,7 +7,7 @@ var config = require(path.join(__dirname, '..', 'config/env'));
 
 module.exports.issueToken = function(user) {
   var payload = {
-    sub: user._id,
+    sub: user.id,
     iat: moment().unix(),
     exp: moment().add(1, 'days').unix()
   };

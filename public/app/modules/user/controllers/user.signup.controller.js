@@ -16,11 +16,14 @@
           .then(function(response) {
             $auth.setToken(response);
             $state.go('profile');
-            console.log('You have successfully created a new account and have been signed-in');
           })
           .catch(function(response) {
-            console.log(response.data.message);
+            vm.serverErrors = {
+              "emailTaken" : response.data.message
+            };
           });
       }
+
     });
+
 })();

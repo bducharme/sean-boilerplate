@@ -9,15 +9,12 @@
       $authProvider.google({
         clientId: ''
       });
-
       $authProvider.facebook({
         clientId: ''
       });
-
       $authProvider.github({
         clientId: ''
       });
-
       $authProvider.twitter({
         clientId: ''
       });

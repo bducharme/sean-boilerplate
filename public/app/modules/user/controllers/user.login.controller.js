@@ -15,22 +15,24 @@
       function login() {
         $auth.login(vm.user)
           .then(function () {
-            console.log('You have successfully signed in.');
             $state.go('profile');
           })
           .catch(function (response) {
-            console.log(response);
+            vm.serverErrors = {
+              "loginError" : response.data.message
+            };
           });
       }
 
       function authenticate(provider) {
         $auth.authenticate(provider)
           .then(function () {
-            console.log('You have successfully signed in with ' + provider);
             $state.go('profile');
           })
           .catch(function (response) {
-            console.log(response);
+            vm.serverErrors = {
+              "loginError" : response.data.message
+            };
           });
       }
     });

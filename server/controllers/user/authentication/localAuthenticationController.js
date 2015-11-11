@@ -5,9 +5,8 @@ var path = require('path');
 var async = require('async');
 var request = require('request');
 
-var config = require(path.join(__dirname, '..', '..', 'config/env'));
-var tokenService = require(path.join(__dirname, '..', '..', 'services/token'));
-var db = require(path.join(__dirname, '..', '..', 'config/sequelize'));
+var tokenService = require(path.join(__dirname, '..', '..', '..','services/token'));
+var db = require(path.join(__dirname, '..', '..', '..','config/sequelize'));
 
 exports.loginWithEmailAndPassword = function(req, res) {
   db.User.findOne({
@@ -26,7 +25,6 @@ exports.loginWithEmailAndPassword = function(req, res) {
       });
     });
   }).catch(function() {
-    console.log('here?');
     return res.status(401).send({
       message: 'Wrong email and/or password'
     });
@@ -58,10 +56,9 @@ exports.signupWithEmailAndPassword = function(req, res) {
         message: err
       });
     });
-  }).catch(function() {
-    console.log('Does it go there if no user found? or really error?');
+  }).catch(function(err) {
     return res.status(401).send({
-      message: 'Wrong email and/or password'
+      message: err
     });
   })
 };

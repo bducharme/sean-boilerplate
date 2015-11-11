@@ -33,7 +33,7 @@
           url: '/profile',
           templateUrl: 'app/modules/user/views/profile.html',
           controller: 'ProfileController',
-          controllerAs: 'profileVM',
+          controllerAs: 'vm',
           resolve: {
             loginRequired: loginRequired
           }
