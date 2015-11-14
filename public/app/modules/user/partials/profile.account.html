@@ -1,0 +1,69 @@
+<legend>Change Password</legend>
+<form method="post" ng-submit="vm.service.changePassword()" name="changePasswordForm">
+  <div class="form-group has-feedback" ng-class="{ 'has-error' :  vm.serverErrors.errorChange}">
+    <input class="form-control input-md" type="password" name="oldPassword" ng-model="vm.user.oldPassword" placeholder="Old Password" required>
+    <div class="help-block" ng-show="vm.serverErrors" ng-messages="vm.serverErrors">
+      <div ng-message="errorChange">{{vm.serverErrors.errorChange}}</div>
+    </div>
+  </div>
+  <div class="form-group has-feedback" ng-class="{ 'has-error' : changePasswordForm.newPassword.$invalid && changePasswordForm.newPassword.$dirty }">
+    <input class="form-control input-md" type="password" name="newPassword" ng-model="vm.user.newPassword" placeholder="New Password" required>
+    <div class="help-block" ng-if="changePasswordForm.newPassword.$dirty" ng-messages="changePasswordForm.newPassword.$error">
+      <div ng-message="required">Password is required.</div>
+    </div>
+  </div>
+  <div class="form-group has-feedback" ng-class="{ 'has-error' : changePasswordForm.confirmPassword.$invalid && changePasswordForm.confirmPassword.$dirty }">
+    <input password-match="vm.user.newPassword" class="form-control input-md" type="password" name="confirmPassword" ng-model="vm.confirmPassword" placeholder="Confirm Password">
+    <div class="help-block" ng-if="changePasswordForm.confirmPassword.$dirty" ng-messages="changePasswordForm.confirmPassword.$error">
+      <div ng-message="compareTo">Password must match.</div>
+    </div>
+  </div>
+
+  <button class="btn btn-md btn-info">Change password</button>
+</form>
+
+<legend>Linked Accounts</legend>
+<div class="has-feedback" ng-class="{ 'has-error' : vm.serverErrors.errorLink || vm.serverErrors.errorUnlink }">
+  <div class="help-block" ng-show="vm.serverErrors" ng-messages="vm.serverErrors">
+    <div ng-message="errorLink">{{vm.serverErrors.errorLink}}</div>
+    <div ng-message="errorUnlink">{{vm.serverErrors.errorUnlink}}</div>
+  </div>
+</div>
+
+<a class="btn btn-block btn-social btn-google" ng-if="vm.user.google" ng-click="vm.service.unlink('google')">
+  <span class="fa fa-google"></span> Unlink Google Account
+</a>
+<a class="btn btn-block btn-social btn-google" ng-if="!vm.user.google" ng-click="vm.service.link('google')">
+  <span class="fa fa-google"></span> Link Google Account
+</a>
+
+<a class="btn btn-block btn-social btn-facebook" ng-if="vm.user.facebook" ng-click="vm.service.unlink('facebook')">
+  <span class="fa fa-facebook"></span> Unlink Facebook Account
+</a>
+<a class="btn btn-block btn-social btn-facebook" ng-if="!vm.user.facebook" ng-click="vm.service.link('facebook')">
+  <i class="fa fa-facebook"></i>Link Facebook Account
+</a>
+
+<a class="btn btn-block btn-social btn-twitter" ng-if="vm.user.twitter" ng-click="vm.service.unlink('twitter')">
+  <span class="fa fa-twitter"></span> Unlink Twitter Account
+</a>
+<a class="btn btn-block btn-social btn-twitter" ng-if="!vm.user.twitter" ng-click="vm.service.link('twitter')">
+  <span class="fa fa-twitter"></span> Link Twitter Account
+</a>
+
+<a class="btn btn-block btn-social btn-github"  ng-if="vm.user.github" ng-click="vm.service.unlink('github')">
+  <span class="fa fa-github"></span>Unlink GitHub Account
+</a>
+<a class="btn btn-block btn-social btn-github"  ng-if="!vm.user.github" ng-click="vm.service.link('github')">
+  <span class="fa fa-github"></span> Link GitHub Account
+</a>
+
+<legend>Delete My Account</legend>
+<p>This action is irreversible.</p>
+<button class="btn btn-md btn-danger" ng-click="vm.service.deleteAccount()">Delete Account</button>
+<div class="has-feedback" ng-class="{ 'has-error' : vm.serverErrors.deleteAccount }">
+  <div class="help-block" ng-show="vm.serverErrors" ng-messages="vm.serverErrors">
+    <div ng-message="deleteAccount">{{vm.serverErrors.deleteAccount}}</div>
+  </div>
+</div>
+

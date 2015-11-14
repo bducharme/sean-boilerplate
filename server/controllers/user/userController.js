@@ -39,3 +39,44 @@ exports.updateUser = function(req, res) {
     });
   });
 };
+
+exports.updatePassword = function(req, res) {
+  db.User.findById(req.user).then(function (user) {
+    user.comparePassword(req.body.oldPassword, function (err, isMatch) {
+      if (!isMatch) {
+        return res.status(401).send({
+          message: 'Password Invalid'
+        });
+      }
+      user.password = req.body.newPassword;
+      user.save().then(function () {
+        res.status(200).end();
+      }).catch(function (err) {
+        return res.status(401).send({
+          message: err
+        });
+      });
+    });
+  }).catch(function (err) {
+    return res.status(401).send({
+      message: err
+    });
+  });
+};
+
+exports.deleteAccount = function(req, res) {
+  db.User.findById(req.user).then(function (user) {
+    user.destroy().then(function () {
+      res.status(200).end();
+    }).catch(function (err) {
+      return res.status(401).send({
+        message: err
+      });
+    });
+  }).catch(function (err) {
+    return res.status(401).send({
+      message: err
+    });
+  });
+};
+

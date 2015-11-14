@@ -17,8 +17,14 @@ module.exports = function(app) {
 
   app.route('/auth/unlink').post(authenticationService.ensureAuthenticated, user.unlinkProviderController.unlinkProvider);
 
-  app.route('/api/me')
-    .get(authenticationService.ensureAuthenticated, user.userController.currentUser)
-    .put(authenticationService.ensureAuthenticated, user.userController.updateUser);
+  app.route('/api/me').get(authenticationService.ensureAuthenticated, user.userController.currentUser);
+
+  app.route('/api/account/profile')
+    .put(authenticationService.ensureAuthenticated, user.userController.updateUser)
+    .delete(authenticationService.ensureAuthenticated, user.userController.deleteAccount);
+
+  app.route('/api/account/password')
+    .put(authenticationService.ensureAuthenticated, user.userController.updatePassword);
+
 
 };
