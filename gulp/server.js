@@ -5,6 +5,7 @@ var nodemon = require('gulp-nodemon');
 var browserSync = require('browser-sync');
 var browserSyncSpa = require('browser-sync-spa');
 var util = require('util');
+var server = require( 'gulp-develop-server' );
 
 var BROWSER_SYNC_RELOAD_DELAY = 1000;
 
@@ -34,7 +35,7 @@ gulp.task('nodemon', function (cb) {
           stream: false
         });
       }, BROWSER_SYNC_RELOAD_DELAY);
-    });
+    })
 });
 
 gulp.task('browser-sync', ['nodemon'], function () {
@@ -55,6 +56,17 @@ gulp.task('browser-sync', ['nodemon'], function () {
   });
 });
 
+gulp.task('test-server', function() {
+  server.listen({
+    path: './app.js',
+    env: {
+      NODE_ENV: 'test',
+      SEED: false
+    }
+  });
+});
+
+
 browserSync.use(browserSyncSpa({
   selector: '[ng-app]'
 }));
@@ -69,9 +81,9 @@ gulp.task('serve:dist', ['build'], function () {
 });
 
 gulp.task('serve:e2e', ['inject'], function () {
-  gulp.start('browser-sync');
+  gulp.start('test-server');
 });
 
 gulp.task('serve:e2e-dist', ['build'], function () {
-  gulp.start('browser-sync');
+  gulp.start('test-server');
 });

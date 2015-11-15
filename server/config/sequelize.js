@@ -54,7 +54,7 @@ sequelize
   })
   .then(function () {
     console.log("Database synchronized");
-    if(process.env.SEED) {
+    if(process.env.SEED === true) {
       require(path.join(__dirname, '/../../e2e/seed'))(db);
     }
   })

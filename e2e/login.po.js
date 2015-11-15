@@ -11,7 +11,7 @@ var LoginPage = function() {
     this.password.sendKeys(value);
   };
   this.login = function() {
-    return element(by.name('loginForm')).click();
+    return element(by.buttonText('Log in')).click();
   }
 };
 
