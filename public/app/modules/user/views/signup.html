@@ -7,7 +7,7 @@
         <h2 class="text-center">Sign up</h2>
         <form method="post" ng-submit="vm.service.signup()" name="signupForm">
           <div class="form-group has-feedback" ng-class="{ 'has-error' : signupForm.email.$invalid && signupForm.email.$dirty || vm.serverErrors }">
-            <input class="form-control input-lg" type="email" id="email" name="email" ng-model="vm.user.email" placeholder="Email" required>
+            <input class="form-control input-lg" type="email" id="email" name="email" ng-model="vm.user.email" placeholder="Email" validate-email required>
             <div class="help-block" ng-if="signupForm.email.$dirty" ng-messages="signupForm.email.$error">
               <div ng-message="required">Your email address is required.</div>
               <div ng-message="email">Your email address is invalid.</div>

@@ -10,7 +10,7 @@ Technologies
 - [Node.js](https://nodejs.org/en/)
 - Pure Javascript, HTML and CSS
 
-Features (*In Progress)
+Features
 --------
 - **Gulp automated workflow** based on the [generator-gulp-angular](https://github.com/Swiip/generator-gulp-angular)
  - Using Nodemon and Browsersync for live development
@@ -20,11 +20,11 @@ Features (*In Progress)
  - Local Authentication using Email and Password
  - Support for Google, Facebook, Twitter and Github
  - **Account Management**
-    - Profile*
-    - Change Password*
-    - Forgot Password*
-    - Link multiple providers to one account*
-    - Delete Account*
+    - Profile
+    - Change Password
+    - Forgot Password (Not done yet)
+    - Link multiple providers to one account
+    - Delete Account
 - **Postgres** is the default database
 
 Usage
