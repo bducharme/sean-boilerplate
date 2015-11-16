@@ -21,6 +21,7 @@
     "nodemailer": "~1.1.1",
     "pg": "^4.2.0",
     "pg-hstore": "^2.3.2",
+    "require": "^2.4.20",
     "sequelize": "^3.8.0",
     "serve-favicon": "^2.3.0",
     "uglify-save-license": "^0.4.1"
