@@ -2,7 +2,8 @@
   "name": "sean-boilerplate",
   "version": "0.0.0",
   "scripts": {
-    "test": "gulp test"
+    "test": "gulp test",
+    "start": "node app.js"
   },
   "dependencies": {
     "bcryptjs": "^2.3.0",
