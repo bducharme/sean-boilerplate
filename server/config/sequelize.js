@@ -26,7 +26,6 @@ fs.readdirSync(config.modelsDirectory)
   .filter(function(file) {
     return (file.indexOf('.') !== 0);
   })
-  // import model files and save model names
   .forEach(function(file) {
     console.log('Loading model file ' + file);
     var model = sequelize.import(path.join(config.modelsDirectory, file));
@@ -39,13 +38,7 @@ Object.keys(db).forEach(function(modelName) {
   }
 });
 
-
-var sequelize_fixtures = require('sequelize-fixtures');
-var models = {
-  User: require(path.join(__dirname, '/../models/user'))
-};
-
-// WARNING: {force: true} will DROP your database everytime you re-run your application
+// WARNING: {force: true} will DROP your database
 sequelize
   .sync({
     force: false,
@@ -54,8 +47,9 @@ sequelize
   })
   .then(function () {
     console.log("Database synchronized");
-    if(process.env.SEED === true) {
+    if(process.env.SEED === 'seed') {
       require(path.join(__dirname, '/../../e2e/seed'))(db);
+      console.log("Database seeded");
     }
   })
   .catch(function (err) {

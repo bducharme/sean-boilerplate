@@ -6,6 +6,6 @@ module.exports = {
     username : process.env.DBUSER,
     password : process.env.DBPASSWORD,
     dialect: "postgres",
-    port : 5432
+    port : 5433
   }
 };

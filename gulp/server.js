@@ -22,14 +22,12 @@ gulp.task('nodemon', function (cb) {
     }
   })
     .on('start', function onStart() {
-      // ensure start only got called once
       if (!called) {
         called = true;
         cb();
       }
     })
     .on('restart', function onRestart() {
-      // reload connected browsers after a slight delay
       setTimeout(function()  {
         browserSync.reload({
           stream: false
@@ -39,19 +37,10 @@ gulp.task('nodemon', function (cb) {
 });
 
 gulp.task('browser-sync', ['nodemon'], function () {
-
-  // for more browser-sync config options: http://www.browsersync.io/docs/options/
   browserSync({
-
-    // informs browser-sync to proxy our expressjs app which would run at the following location
     proxy: 'localhost:3000',
-
-    // informs browser-sync to use the following port for the proxied app
-    // notice that the default port is 3000, which would clash with our expressjs
     port: 4000,
-
     browser: ['google-chrome'],
-
     notify: true
   });
 });
@@ -61,7 +50,17 @@ gulp.task('test-server', function() {
     path: './app.js',
     env: {
       NODE_ENV: 'test',
-      SEED: false
+      SEED: 'seed'
+    }
+  });
+});
+
+gulp.task('prod-test-server', function() {
+  server.listen({
+    path: './app.js',
+    env: {
+      NODE_ENV: 'production',
+      SEED: 'seed'
     }
   });
 });
@@ -85,5 +84,5 @@ gulp.task('serve:e2e', ['inject'], function () {
 });
 
 gulp.task('serve:e2e-dist', ['build'], function () {
-  gulp.start('test-server');
+  gulp.start('prod-test-server');
 });
