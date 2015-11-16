@@ -2,5 +2,6 @@ node_modules/
 public/bower_components/
 .idea/
 .tmp/
-dist/
+#dist/
+public/
 /variables.sh
