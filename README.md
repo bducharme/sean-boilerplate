@@ -2,6 +2,10 @@
 
 A boilerplate for Node.js web applications with Gulp.
 
+**Live Demo:** [https://sean-boilerplate.herokuapp.com](https://sean-boilerplate.herokuapp.com)
+
+---
+
 Technologies
 --------
 - [Sequelize](http://docs.sequelizejs.com/en/latest/)
