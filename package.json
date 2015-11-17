@@ -4,7 +4,7 @@
   "scripts": {
     "test": "gulp test",
     "prestart": "npm install",
-    "start": "node app.js"
+    "start": "NODE_ENV=production node app.js"
   },
   "dependencies": {
     "bcryptjs": "^2.3.0",
