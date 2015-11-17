@@ -11,6 +11,9 @@ var sequelize = new Sequelize(config.db.dbName, config.db.username, config.db.pa
   host: config.db.host,
   dialect: config.db.dialect,
   port:   config.db.port,
+  dialectOptions: {
+    ssl: true
+  },
   logging : false
 });
 
